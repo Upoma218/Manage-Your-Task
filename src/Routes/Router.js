@@ -4,6 +4,7 @@ import CompletedTask from "../Pages/CompletedTask/CompletedTask";
 import AddTask from "../Pages/AddTask/AddTask";
 import Home from "../Pages/Home/Home/Home";
 import MyTask from "../Pages/MyTask/MyTask";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -16,15 +17,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addTask',
-                element: <AddTask></AddTask>
+                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
             },
             {
                 path: '/myTask',
-                element: <MyTask></MyTask>
+                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
             },
             {
                 path: '/completedTask',
-                element: <CompletedTask></CompletedTask>
+                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
             },
         ]
     }
