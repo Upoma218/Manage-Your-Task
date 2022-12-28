@@ -1,0 +1,9 @@
+$theme-colors: (
+    "info": rgb(148, 34, 96),
+    "danger": rgb(204, 124, 19),
+    "success": #4D7902,
+    "light": #d4f5d7,
+    
+);
+
+@import "~bootstrap/scss/bootstrap";
