@@ -18,6 +18,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 setAuthToken(user);
+                alert('Registration successful')
             })
             .catch(error => console.log(error));
     }

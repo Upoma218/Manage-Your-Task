@@ -12,7 +12,7 @@ const MyTask = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/myTasks?email=${user?.email}`, {
+            fetch(`https://task-management-app-server.vercel.app/myTasks?email=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('task-management token')}`
                 }
@@ -34,7 +34,7 @@ const MyTask = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure to delete this task?');
         if (proceed) {
-            fetch(`http://localhost:5000/tasks/${id}`, {
+            fetch(`https://task-management-app-server.vercel.app/tasks/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('task-management token')}`
@@ -52,7 +52,7 @@ const MyTask = () => {
         }
     }
     const handleComplete = id => {
-        fetch(`http://localhost:5000/tasks/${id}`, {
+        fetch(`https://task-management-app-server.vercel.app/tasks/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -78,8 +78,8 @@ const MyTask = () => {
             <h1 className='text-center text-success my-5'>My Task</h1>
             <div className='row'>
                 {
-                    tasks?.length && tasks?.map(task => <div key={task._id} className='col-sm col-lg-4 gap-3'>
-                        <Card style={{ width: '18rem' }}>
+                    tasks?.length && tasks?.map(task => <div key={task._id} className='col-sm col-lg-4 mb-3 gap-3'>
+                        <Card>
                             <Card.Img variant="top" src={task.image} style={{ "height": "200px" }} />
                             <Card.Body>
                                 <Card.Title className='text-center'>{task.title}</Card.Title>
