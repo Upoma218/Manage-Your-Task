@@ -1,11 +1,13 @@
-import React from 'react';
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
+import React, { useContext } from 'react';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { useNavigate, useNavigation } from 'react-router-dom';
 import task from '../../Assets/task.png';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const AddTask = () => {
+    const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_imageBB_key;
     const navigate = useNavigate();
@@ -26,8 +28,9 @@ const AddTask = () => {
                     console.log(imgData.data.url);
                     const task = {
                         title: data.title,
-                        category: data.category,
-                        image: imgData.data.url
+                        time: data.time,
+                        image: imgData.data.url,
+                        email: data.email
                     }
 
 
@@ -42,28 +45,36 @@ const AddTask = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
-                            // toast.success(`Product added successfully`);
+                            toast.success(`Task added successfully`);
                             navigate('/myTask')
                         })
                 }
             })
     }
-
-    if(navigation.state === 'loading'){
+   
+    if (navigation.state === 'loading') {
         return (<div className='mx-auto my-6'>
             <Spinner animation="grow" variant="success" />
         </div>)
     }
     return (
         <div className='mt-5'>
+            <h1 className='text-center text-success my-5'>Add Your Task Here</h1>
             <Container>
                 <Row>
                     <Col sm>
-                        <img src={task} alt="loginImg" className='img-fluid me-3' />
+                        <img src={task} alt="loginImg" className='img-fluid mb-3' />
                     </Col>
                     <Col sm>
                         <form onSubmit={handleSubmit(handleAddTasks)} className="bg-light p-4 rounded-3">
                             <div className="form-control w-100">
+                                <label className="label"> <span className="label-text">Email</span></label>
+                                <input type="text"{...register('email', {
+                                    required: "Email is required"
+                                })} className="input w-100 mt-2" value={user?.email} readOnly />
+                                {errors.email && <p className='text-red-600 py-3'>{errors.email.message}</p>}
+                            </div>
+                            <div className="form-control w-100 mt-4">
                                 <label className="label"> <span className="label-text">Task Name</span></label>
                                 <input type="text" {...register("title", {
                                     required: "Task Name is Required"

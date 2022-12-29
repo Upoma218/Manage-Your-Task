@@ -1,7 +1,13 @@
 $theme-colors: (
     "success": #4D7902,
+    "info": #41c5e6,
     "light": #d4f5d7,
+    "warning": #d39207,
+    "danger": #f0112f,
     
+);
+$thumbnail-width: (
+    "width": 20px,
 );
 
 @import "~bootstrap/scss/bootstrap";

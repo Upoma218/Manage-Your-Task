@@ -49,10 +49,10 @@ const Register = () => {
                             <Form.Label>Phone</Form.Label>
                             <Form.Control placeholder="Enter your Phone Number" />
                         </Form.Group>
-                        <Button variant="success" type="submit"className='mx-auto'>
+                        <Button variant="success" type="submit"className='mx-auto w-100'>
                             Submit
                         </Button>
-                        <p className='my-2'>Already have an account? Please <Link to="/login">Login</Link></p>
+                        <p className='my-2 text-center'>Already have an account? Please <Link to="/login">Login</Link></p>
                     </Form>
                 </Col>
             </Row>

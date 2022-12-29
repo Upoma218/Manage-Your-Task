@@ -7,6 +7,7 @@ import MyTask from "../Pages/MyTask/MyTask";
 import PrivateRoute from "./PrivateRoute";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
+import UpdateTask from "../Pages/UpdateTask/UpdateTask";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,11 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/updateTask/:id',
+                element: <UpdateTask></UpdateTask>,
+                loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
             },
             {
                 path: '/addTask',

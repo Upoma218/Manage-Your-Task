@@ -1,14 +1,17 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../Assets/login.png';
 import { AuthContext } from '../../Context/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
     console.log(location)
     const navigate = useNavigate();
+    const googleProvider = new GoogleAuthProvider();
 
     const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
@@ -44,6 +47,15 @@ const Login = () => {
             })
             .catch(error => console.log(error));
     }
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <div className='my-5'>
             <Container>
@@ -62,10 +74,11 @@ const Login = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" name="password" placeholder="Password" />
                             </Form.Group>
-                            <Button variant="success" type="submit" className='mx-auto mt-4'>
+                            <Button variant="success" type="submit" className='mx-auto mt-4 w-100'>
                                 Submit
                             </Button>
-                            <p className='my-2'>Don't have an account? Please <Link to="/register">Register</Link></p>
+                            <Button onClick={handleGoogleSignIn}className=' btn btn-success w-100 mt-4'><span><FcGoogle className=' me-2'></FcGoogle></span>CONTINUE WITH GOOGLE</Button>
+                            <p className='my-2 text-center'>Don't have an account? Please <Link to="/register">Register</Link></p>
                         </Form>
                     </Col>
                 </Row>

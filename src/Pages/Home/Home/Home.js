@@ -22,7 +22,7 @@ const Home = () => {
                     />
                 </span>
             </h1>
-            <div  className='d-flex justify-content-center align-items-center my-4'>
+            <div  className='d-flex justify-content-center align-items-center my-5'>
                 <Link to="/addTask"><Button variant="success"size="sm">VIEW DETAILS</Button></Link>
             </div>
             <div>
