@@ -19,9 +19,11 @@ const MenuBar = () => {
             })
             .catch(error => console.log(error))
     }
+    
     useEffect(() => {
         themeChange(false)
     }, [])
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -45,8 +47,10 @@ const MenuBar = () => {
                                     <Link to="/register" className='btn btn-outline fw-bold text-success me-2 text-decoration-none'>Register</Link>
                                 </>
                         }
-                        <div className='form-check form-switch mt-2'>
-                            <input type="checkbox" name="checkbox" className='form-check-input'id='checkbox'data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"/>
+                        <div className="form-check form-switch mt-2">
+                            <label className="label cursor-pointer" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+                                <input type="checkbox"  name="checkbox" className='form-check-input' id='checkbox'/>
+                            </label>
                         </div>
                     </Nav>
                 </Navbar.Collapse>
