@@ -81,16 +81,13 @@ const MyTask = () => {
                     tasks?.length && tasks?.map(task => <div key={task._id} className='col-sm col-lg-4 mb-3 gap-3'>
                         <Card>
                             <Card.Img variant="top" src={task.image} style={{ "height": "200px" }} />
-                            <Card.Body>
+                            <Card.Body className='text-center'>
                                 <Card.Title className='text-center'>{task.title}</Card.Title>
                                 <Card.Text className='text-center'>
                                     {task.time}
-                                </Card.Text>
-                                <Card.Text className='text-center'>
                                     <p>Comments: text</p>
                                 </Card.Text>
-                            </Card.Body>
-                            <Card.Body className='d-flex justify-content-evenly'>
+                                <div className='d-flex justify-content-evenly'>
                                 {
                                     task?.condition === 'completed' && <Button variant="success" size="sm" className='text-white'>Completed</Button>
                                 }
@@ -103,7 +100,9 @@ const MyTask = () => {
                                 <Button variant="danger" size="sm" className='text-white' onClick={() => { handleDelete(task._id) }}>
                                     Delete
                                 </Button>
+                            </div>
                             </Card.Body>
+                            
                         </Card>
 
                     </div>)

@@ -22,8 +22,8 @@ const UpdateTask = () => {
         setTask(newTask);
     }
 
-    const handleUpdate = () => {
-        fetch(`https://task-management-app-server.vercel.app/updateTask/${previousTask._id}`, 
+    const handleUpdate = id => {
+        fetch(`https://task-management-app-server.vercel.app/updateTask/${id}`, 
         {
             method: 'PUT',
             headers: {

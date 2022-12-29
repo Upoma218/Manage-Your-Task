@@ -95,22 +95,17 @@ const CompletedTask = () => {
                     tasks?.length && tasks?.map(task => <div key={task._id} className='col-sm col-lg-4 mb-3 gap-3'>
                         <Card>
                             <Card.Img variant="top" src={task.image} style={{ "height": "200px" }} />
-                            <Card.Body>
+                            <Card.Body className='text-center'>
                                 <Card.Title className='text-center'>{task.title}</Card.Title>
                                 <Card.Text className='text-center'>
                                     {task.time}
                                 </Card.Text>
-                            </Card.Body>
-                            <Card.Body className='text-center'>
                                 {
                                     task?.condition === 'completed' && <h6><span className='text-success'>Task Condition:</span> Completed</h6>
                                 }
                                 {
                                     task?.condition !== 'completed' && <h6><span className='text-success'>Task Condition:</span> Not Completed</h6>
                                 }
-
-                            </Card.Body>
-                            <Card.Body className='text-center'>
                                 {
                                     task?.condition === 'completed' &&
                                     <form onSubmit={handleAddComment}>
