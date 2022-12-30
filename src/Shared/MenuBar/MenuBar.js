@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -11,6 +11,17 @@ import "../../custom.scss";
 
 const MenuBar = () => {
     const { user, logout } = useContext(AuthContext);
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    };
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
 
     const handleLogout = () => {
         logout()
@@ -19,7 +30,7 @@ const MenuBar = () => {
             })
             .catch(error => console.log(error))
     }
-    
+
     useEffect(() => {
         themeChange(false)
     }, [])
@@ -47,11 +58,12 @@ const MenuBar = () => {
                                     <Link to="/register" className='btn btn-outline fw-bold text-success me-2 text-decoration-none'>Register</Link>
                                 </>
                         }
-                        <div className="form-check form-switch mt-2">
-                            <label className="label cursor-pointer" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
-                                <input type="checkbox"  name="checkbox" className='form-check-input' id='checkbox'/>
+                        <div className="theme">
+                            <label className="label cursor-pointer form-check form-switch mt-2" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+                                <input onClick={toggleTheme} type="checkbox" name="checkbox" className='form-check-input' id='checkbox' />
                             </label>
                         </div>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

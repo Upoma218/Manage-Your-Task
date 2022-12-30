@@ -21,7 +21,7 @@ const UpdateTask = () => {
         }
         console.log(task)
 
-        fetch(`http://localhost:5000/updateTask/${previousTask._id}`,
+        fetch(`https://task-management-app-server.vercel.app/updateTask/${previousTask._id}`,
             {
                 method: 'PATCH',
                 headers: {
