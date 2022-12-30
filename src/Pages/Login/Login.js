@@ -29,7 +29,7 @@ const Login = () => {
 
                 console.log(currentUser);
 
-                fetch('https://task-management-app-server.vercel.app/jwt', {
+                fetch('http://localhost:5000/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

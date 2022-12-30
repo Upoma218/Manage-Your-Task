@@ -12,7 +12,7 @@ const MyTask = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://task-management-app-server.vercel.app/myTasks?email=${user?.email}`, {
+            fetch(`http://localhost:5000/myTasks?email=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('task-management token')}`
                 }
@@ -34,7 +34,7 @@ const MyTask = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure to delete this task?');
         if (proceed) {
-            fetch(`https://task-management-app-server.vercel.app/tasks/${id}`, {
+            fetch(`http://localhost:5000/tasks/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('task-management token')}`
@@ -52,7 +52,7 @@ const MyTask = () => {
         }
     }
     const handleComplete = id => {
-        fetch(`https://task-management-app-server.vercel.app/tasks/${id}`, {
+        fetch(`http://localhost:5000/tasks/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
