@@ -1,13 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Spinner } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-import { Link, useNavigate, useNavigation } from 'react-router-dom';
+import { useNavigate, useNavigation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const CompletedTask = () => {
     const { user } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors } } = useForm();
     const [tasks, setTasks] = useState([]);
     const navigate = useNavigate();
     const navigation = useNavigation();

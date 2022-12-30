@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Card, Col, Container, Row, Spinner, Table } from 'react-bootstrap';
+import { Button, Card, Spinner } from 'react-bootstrap';
 import { toast } from 'react-hot-toast';
-import { Link, Navigate, useNavigate, useNavigation } from 'react-router-dom';
+import { Link,  useNavigate, useNavigation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const MyTask = () => {
@@ -85,7 +85,6 @@ const MyTask = () => {
                                 <Card.Title className='text-center'>{task.title}</Card.Title>
                                 <Card.Text className='text-center'>
                                     {task.time}
-                                    <p>Comments: text</p>
                                 </Card.Text>
                                 <div className='d-flex justify-content-evenly'>
                                 {

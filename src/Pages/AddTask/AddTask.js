@@ -34,7 +34,7 @@ const AddTask = () => {
                     }
 
 
-                    fetch('http://localhost:5000/tasks', {
+                    fetch('https://task-management-app-server.vercel.app/tasks', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
