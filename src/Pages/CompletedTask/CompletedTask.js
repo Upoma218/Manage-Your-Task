@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Spinner } from 'react-bootstrap';
-import { useNavigate, useNavigation } from 'react-router-dom';
+import { Link, useNavigate, useNavigation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const CompletedTask = () => {
@@ -98,10 +98,10 @@ const CompletedTask = () => {
                                     {task.time}
                                 </Card.Text>
                                 {
-                                    task?.condition === 'completed' && <h6><span className='text-success'>Task Condition:</span> Completed</h6>
+                                    task?.condition === 'completed' && <Button className='btn btn-success my-2'>Completed</Button>
                                 }
                                 {
-                                    task?.condition !== 'completed' && <h6><span className='text-success'>Task Condition:</span> Not Completed</h6>
+                                    task?.condition !== 'completed' && <Link to="/myTask"><Button className='btn btn-warning my-2 text-white'>Not Completed</Button></Link>
                                 }
                                 {
                                     task?.condition === 'completed' &&
