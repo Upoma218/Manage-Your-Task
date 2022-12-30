@@ -62,7 +62,7 @@ const MyTask = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     console.log(data)
-                    toast.success(' Task Completed SuccessFully Successfully');
+                    toast.success(' Task Completed Successfully');
                     navigate('/completedTask')
                 }
             })

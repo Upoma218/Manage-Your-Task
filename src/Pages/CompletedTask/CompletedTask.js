@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Spinner } from 'react-bootstrap';
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate, useNavigation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
@@ -79,6 +80,7 @@ const CompletedTask = () => {
             })
             .catch(error => console.log(error))
     }
+   
     if (navigation.state === 'loading') {
         return (<div className='mx-auto my-6'>
             <Spinner animation="grow" variant="success" />
@@ -91,17 +93,17 @@ const CompletedTask = () => {
                 {
                     tasks?.length && tasks?.map(task => <div key={task._id} className='col-sm col-lg-4 mb-3 gap-3'>
                         <Card>
-                            <Card.Img variant="top" src={task.image} style={{ "height": "200px" }} />
+                            <Card.Img variant="top" src={task?.image} style={{ "height": "200px" }} />
                             <Card.Body className='text-center'>
-                                <Card.Title className='text-center'>{task.title}</Card.Title>
+                                <Card.Title className='text-center'>{task?.title}</Card.Title>
                                 <Card.Text className='text-center'>
-                                    {task.time}
-                                </Card.Text>
+                                    <p>{task?.time}</p>
+                                
                                 {
-                                    task?.condition === 'completed' && <Button className='btn btn-success my-2'>Completed</Button>
+                                    task?.condition === 'completed' && <Button className='btn btn-success mb-2'>Completed</Button>
                                 }
                                 {
-                                    task?.condition !== 'completed' && <Link to="/myTask"><Button className='btn btn-warning my-2 text-white'>Not Completed</Button></Link>
+                                    task?.condition !== 'completed' && <Link to="/myTask"><Button className='btn btn-warning mb-2 text-white'>Not Completed</Button></Link>
                                 }
                                 {
                                     task?.condition === 'completed' &&
@@ -110,6 +112,7 @@ const CompletedTask = () => {
                                         <input type="submit" className="btn btn-success w-100 my-4" value=" Add Comment" required />
                                     </form>
                                 }
+                                </Card.Text>
                                 <Button variant="danger" size="sm" className='text-white mx-auto w-100' onClick={() => { handleDelete(task._id) }} >
                                     Delete Task
                                 </Button>
