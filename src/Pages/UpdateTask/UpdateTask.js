@@ -1,7 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../Context/AuthProvider';
 import taskImg from '../../Assets/task.png';
 import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
